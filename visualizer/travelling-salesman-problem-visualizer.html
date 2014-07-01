@@ -1,0 +1,114 @@
+<link rel="import" href="bower_components/core-scroll-header-panel/core-scroll-header-panel.html">
+<link rel="import" href="bower_components/core-icons/iconsets/maps-icons.html">
+<link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="travelling-salesman-problem.html">
+
+<polymer-element name="travelling-salesman-problem-visualizer">
+  <template>
+    <style>
+      core-scroll-header-panel {
+        height: 100%;
+      }
+      core-toolbar, a {
+        color: #f1f1f1;
+        fill: #f1f1f1;
+        background: #4285f4;
+      }
+      paper-tabs {
+        color: #ddd;
+        width: 100%;
+        box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.2);
+      }
+      paper-tabs paper-tab.core-selected,
+      paper-tabs paper-tab::shadow #ink {
+        color: #f1f1f1;
+      }
+      paper-radio-group paper-radio-button::shadow #ink[checked] {
+        color: #4285f4;
+      }
+      .content {
+        margin: 16px 30px;
+      }
+      #distance {
+        margin-bottom: 8px;
+      }
+      #refresh {
+        margin-right: 12px;
+      }
+      #menu {
+        width: 220px;
+      }
+      #distance, #solvers  {
+        padding: 8px;
+      }
+      #tsp-card {
+        margin-left: 10px;
+        padding: 12px;
+        width: 100%;
+      }
+      travelling-salesman-problem {
+        width: 100%;
+      }
+    </style>
+    <core-scroll-header-panel keepCondensedHeader>
+      <core-toolbar id="title" class="medium-tall">
+        <span class="indent title flex">Google 2014 STEP Class 5 & 6 - Travelling Salesman Problem Challenges</span>
+        <a href=".."><paper-icon-button icon="drive-form"></paper-icon-button></a>
+        <a href=".."><paper-icon-button icon="help"></paper-icon-button></a>
+        <div class="bottom fit" horizontal center-justified end layout>
+          <paper-tabs id="challenges" selected="0">
+            <paper-tab>Challenge 0</paper-tab>
+            <paper-tab>Challenge 1</paper-tab>
+            <paper-tab>Challenge 2</paper-tab>
+            <paper-tab>Challenge 3</paper-tab>
+            <paper-tab>Challenge 4</paper-tab>
+            <paper-tab>Challenge 5</paper-tab>
+            <paper-tab>Challenge 6</paper-tab>
+          </paper-tabs>
+        </div>
+      </core-toolbar>
+      <div content class="content" horizontal layout>
+        <div id="menu" vertical layout>
+          <div id="distance" class="card" horizontal layout center>
+            <paper-fab id="refresh" icon="maps:directionswalk" on-click="{{refresh}}"></paper-fab>
+            <div>{{distance}}m</div>
+          </div>
+          <paper-radio-group flex id="solvers" selected="greedy" valueattr="name">
+            <paper-radio-button name="random" label="hayato-random"></paper-radio-button><br>
+            <paper-radio-button name="greedy" label="hayato-greedy"></paper-radio-button><br>
+            <paper-radio-button name="sa" label="hayato-sa"></paper-radio-button><br>
+            <paper-radio-button name="yours" label="yours"></paper-radio-button>
+          </paper-radio-group>
+        </div>
+        <div id="tsp-card">
+          <travelling-salesman-problem id="tsp" distance="{{distance}}"></travelling-salesman-problem>
+          <paper-shadow z="1"></paper-shadow>
+        </div>
+      </div>
+    </core-scroll-header-panel>
+  </template>
+  <script>
+    Polymer({
+        ready: function() {
+            var challenges = this.$.challenges;
+            var solvers = this.$.solvers;
+            var tsp = this.$.tsp;
+            challenges.addEventListener('core-select', function(e) {
+                tsp.inputfile = '../input_' + challenges.selected + '.csv';
+                tsp.solutionfile = '../solution_' + solvers.selected + '_' + challenges.selected + '.csv';
+            });
+            solvers.addEventListener('core-select', function() {
+                tsp.solutionfile = '../solution_' + solvers.selected + '_' + challenges.selected + '.csv';
+            });
+        },
+        refresh: function() {
+            this.$.tsp.draw();
+        }
+    });
+  </script>
+</polymer-element>
