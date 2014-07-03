@@ -35,7 +35,7 @@
       .content {
         margin: 16px 30px;
       }
-      #distance {
+      #pathlength {
         margin-bottom: 8px;
       }
       #refresh {
@@ -44,7 +44,7 @@
       #menu {
         width: 220px;
       }
-      #distance, #solvers  {
+      #pathlength, #solvers  {
         padding: 8px;
       }
       #tsp-card {
@@ -75,9 +75,9 @@
       </core-toolbar>
       <div content class="content" horizontal layout>
         <div id="menu" vertical layout>
-          <div id="distance" class="card" horizontal layout center>
+          <div id="pathlength" class="card" horizontal layout center>
             <paper-fab id="refresh" icon="maps:directionswalk" on-click="{{refresh}}"></paper-fab>
-            <div>{{distance}}m</div>
+            <div>{{pathlength}}m</div>
           </div>
           <paper-radio-group flex id="solvers" selected="greedy" valueattr="name">
             <paper-radio-button name="random" label="hayato-random"></paper-radio-button><br>
@@ -87,7 +87,7 @@
           </paper-radio-group>
         </div>
         <div id="tsp-card">
-          <travelling-salesman-problem id="tsp" distance="{{distance}}"></travelling-salesman-problem>
+          <travelling-salesman-problem id="tsp" pathlength="{{pathlength}}"></travelling-salesman-problem>
           <paper-shadow z="1"></paper-shadow>
         </div>
       </div>

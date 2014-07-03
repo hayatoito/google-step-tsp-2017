@@ -1,6 +1,6 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 
-<polymer-element name="travelling-salesman-problem" attributes="inputfile solutionfile distance">
+<polymer-element name="travelling-salesman-problem" attributes="inputfile solutionfile pathlength">
   <template>
     <style>
       :host {
@@ -62,11 +62,11 @@
                 function distance(i, j) {
                     return Math.sqrt(Math.pow(cities[i].x - cities[j].x, 2) + Math.pow(cities[i].y - cities[j].y, 2));
                 }
-                var totalDistance = 0;
+                var pathlength = 0;
                 for (var i = 0; i < N; ++i) {
-                    totalDistance += distance(solution[i], solution[(i + 1) % N]);
+                    pathlength += distance(solution[i], solution[(i + 1) % N]);
                 }
-                self.distance = Math.round(totalDistance * 100) / 100;
+                self.pathlength = Math.round(pathlength * 100) / 100;
             }
 
             function drawGraph() {
