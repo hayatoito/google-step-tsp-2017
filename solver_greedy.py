@@ -21,8 +21,12 @@ def solve(cities):
     current_city = 0
     unvisited_cities = set(range(1, N))
     solution = [current_city]
-    for i in range(N - 1):
-        next_city = min(unvisited_cities, key=lambda n: dist[current_city][n])
+
+    def distance_from_current_city(to):
+        return dist[current_city][to]
+
+    while unvisited_cities:
+        next_city = min(unvisited_cities, key=distance_from_current_city)
         unvisited_cities.remove(next_city)
         solution.append(next_city)
         current_city = next_city

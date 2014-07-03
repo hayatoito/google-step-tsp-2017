@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import sys
 import math
+import sys
 
 from common import print_solution, read_input
 

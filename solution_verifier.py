@@ -26,7 +26,7 @@ def verify_solutions():
                 tour = [int(i.strip()) for i in lines[1:N + 1]]
             assert set(tour) == set(range(N))
             path_length = sum(distance(cities[u], cities[v])
-                        for u, v in zip(tour, tour[1:] + tour[0:1]))
+                              for u, v in zip(tour, tour[1:] + tour[0:1]))
             print('{:8}: {:>10.2f}'.format(solution_name, path_length))
         print()
 
