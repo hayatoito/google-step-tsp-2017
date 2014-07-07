@@ -4,7 +4,7 @@ import SimpleHTTPServer
 import SocketServer
 import os
 
-PORT = 800
+PORT = 8000
 
 class NoCacheHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
   def __init__(self, request, client_address, server):
