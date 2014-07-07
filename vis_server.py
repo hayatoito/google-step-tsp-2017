@@ -40,7 +40,6 @@ class NoCacheHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
     self.end_headers()
     return f
 
-#Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
 Handler = NoCacheHandler
 
 httpd = SocketServer.TCPServer(("", PORT), Handler)
