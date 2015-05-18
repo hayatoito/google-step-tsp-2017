@@ -2,19 +2,22 @@
   "name": "paper-ripple",
   "private": true,
   "dependencies": {
-    "core-icon": "Polymer/core-icon#>=0.3.0 <1.0.0",
-    "core-icons": "Polymer/core-icons#>=0.3.0 <1.0.0",
-    "font-roboto": "Polymer/font-roboto#>=0.3.0 <1.0.0"
+    "core-icon": "Polymer/core-icon#^0.5",
+    "core-icons": "Polymer/core-icons#^0.5",
+    "font-roboto": "Polymer/font-roboto#^0.5"
   },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^1.0.0"
+  },
+  "version": "0.5.6",
   "homepage": "https://github.com/Polymer/paper-ripple",
-  "version": "0.3.3",
-  "_release": "0.3.3",
+  "_release": "0.5.6",
   "_resolution": {
     "type": "version",
-    "tag": "0.3.3",
-    "commit": "4e858f8f86de8eb5f6ab8e31f1de80502b9bb2af"
+    "tag": "0.5.6",
+    "commit": "b259423c0de5c8bce13901648d8aed8fb85ab7e4"
   },
   "_source": "git://github.com/Polymer/paper-ripple.git",
-  "_target": ">=0.3.0 <1.0.0",
+  "_target": "^0.5",
   "_originalSource": "Polymer/paper-ripple"
 }

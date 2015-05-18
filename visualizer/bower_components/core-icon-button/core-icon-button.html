@@ -22,26 +22,23 @@ how to use a custom icon set.
 
 @group Polymer Core Elements
 @element core-icon-button
-@extends core-theme-aware
 @homepage github.io
 -->
 
+<link rel="import" href="../core-focusable/core-focusable.html">
 <link rel="import" href="../core-icon/core-icon.html">
 <link rel="import" href="../core-icons/core-icons.html">
 
 <polymer-element name="core-icon-button" attributes="src icon active">
 
   <template>
-
     <link rel="stylesheet" href="core-icon-button.css">
-
-    <core-icon src="{{src}}" icon="{{icon}}"><content></content></core-icon>
-
+    <core-icon src="{{src}}" icon="{{icon}}"></core-icon><content></content>
   </template>
 
   <script>
 
-    Polymer('core-icon-button', {
+    var p = {
 
       /**
        * The URL of an image for the icon.  Should not use `icon` property
@@ -78,7 +75,10 @@ how to use a custom icon set.
         this.classList.toggle('selected', this.active);
       }
 
-    });
+    };
+    
+    Polymer.mixin2(p, Polymer.CoreFocusable);
+    Polymer('core-icon-button', p);
 
   </script>
 

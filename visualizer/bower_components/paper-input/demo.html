@@ -1,114 +1,236 @@
+<!--
+    @license
+    Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+    This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+    The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+    The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+    Code distributed by Google as part of the polymer project is also
+    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
 <!doctype html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
   <title>paper-input</title>
-  <script src="../platform/platform.js"></script>
+
+  <script src="../webcomponentsjs/webcomponents.js"></script>
+
   <link href="../font-roboto/roboto.html" rel="import">
+  <link href="paper-autogrow-textarea.html" rel="import">
+  <link href="paper-input-decorator.html" rel="import">
   <link href="paper-input.html" rel="import">
-  <style>
+  <link href="paper-char-counter.html" rel="import">
+
+  <style shim-shadowdom>
+
     body {
-      padding: 0;
-      margin: 0;
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
-    }
-    section {
       font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+      font-size: 14px;
+      margin: 0;
+      padding: 24px;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-touch-callout: none;
+    }
+
+    section {
+      padding: 20px 0;
+    }
+
+    section > div {
+      padding: 14px;
       font-size: 16px;
-      text-align: center;
-      padding: 36px 20%;
-      background: #eee;
     }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 2em;
-    }
-    .container {
-      margin: 24px 0;
-      border-radius: 5px;
-    }
+
     paper-input {
-      width: 100%;
-      text-align: left;
+      width: 80%;
     }
-    .dark-theme {
-      background: #333333;
-      color: #ccc;
+
+    paper-input-decorator {
+      max-width: 80%;
     }
-    .dark-theme paper-input {
-      color: #666;
+
+    @media only screen and (min-width : 320px) {
+      paper-input {
+        width: 100%;
+      }
+
+      paper-input-decorator {
+        max-width: 100%;
+      }
     }
-    .dark-theme input {
-      color: #fff;
+
+    paper-input.narrow {
+      width: 150px;
     }
-    .dark-theme /deep/ input {
-      color: #fff;
+
+    .custom /deep/ ::-webkit-input-placeholder {
+      color: #f4b400;
     }
-    .dark-theme #underline {
-      background: #666;
-      border-bottom-color: #666;
+
+    .custom /deep/ ::-moz-placeholder {
+      color: #f4b400;
     }
-    .dark-theme /deep/ #underline {
-      background: #666;
-      border-bottom-color: #666;
+
+    .custom /deep/ :-ms-input-placeholder {
+      color: #f4b400;
     }
-    .dark-theme .focusedColor {
-      color: #7d8ad0;
-      background: #7d8ad0;
+
+    .custom /deep/ .label-text,
+    .custom /deep/ .error {
+      color: #f4b400;
     }
-    .dark-theme /deep/ .focusedColor {
-      color: #7d8ad0;
-      background: #7d8ad0;
+
+    .custom /deep/ .unfocused-underline {
+      background-color: #f4b400;
     }
+
+    .custom[focused] /deep/ .floated-label .label-text {
+      color: #0f9d58;
+    }
+
+    .custom /deep/ .focused-underline {
+      background-color: #0f9d58;
+    }
+
+    .custom.invalid /deep/ .floated-label .label-text,
+    .custom /deep/ .error {
+      color: #f06292;
+    }
+
+    .custom.invalid /deep/ .focused-underline {
+      background-color: #f06292;
+    }
+
+    .custom {
+      color: #1a237e;
+    }
+
   </style>
+
 </head>
 <body unresolved>
+
   <section>
-    <h1>&lt;paper-input&gt;</h1>
-    <div class="container">
-      <paper-input label="Type something..."></paper-input>
-    </div>
-    <div class="container">
-      <paper-input label="Type only numbers..." validate="^[0-9]*$" error="Input is not a number!"></paper-input>
-    </div>
-    <div class="container">
-      <paper-input disabled label="I'm disabled"></paper-input>
-    </div>
-    <div class="container">
-      <paper-input floatingLabel label="Floating label"></paper-input>
-    </div>
-    <div class="container">
-      <paper-input floatingLabel label="Type only numbers... (floating)" validate="^[0-9]*$" error="Input is not a number!"></paper-input>
-    </div>
-    <div class="container">
-      <paper-input multiline label="Type multiple lines here..."></paper-input>
-    </div>
-    <div class="container">
-      <paper-input multiline rows="3" label="This input is 3 rows high"></paper-input>
-    </div>
-    <div class="container">
-      <paper-input multiline maxRows="3" label="This input is at most 3 rows high"></paper-input>
-    </div>
-    <div class="container">
-      <paper-input multiline floatingLabel label="Multiple lines and a floating label"></paper-input>
-    </div>
+
+    <div>Standalone</div>
+
+    <br>
+
+    <paper-input label="label"></paper-input>
+
+    <br>
+
+    <paper-input label="floating label" floatingLabel></paper-input>
+
+    <br>
+
+    <paper-input label="disabled" disabled></paper-input>
+
   </section>
-  <section class="dark-theme">
-    <div class="container">
-      <paper-input label="Type something..."></paper-input>
-    </div>
-    <div class="container">
-      <paper-input label="Type only numbers..." validate="^[0-9]*$" error="Input is not a number!"></paper-input>
-    </div>
-    <div class="container">
-      <paper-input disabled label="I'm disabled"></paper-input>
-    </div>
-    <div class="container">
-      <paper-input floatingLabel label="Floating label"></paper-input>
-    </div>
-    <div class="container">
-      <paper-input floatingLabel label="Type only numbers... (floating)" validate="^[0-9]*$" error="Input is not a number!"></paper-input>
-    </div>
+
+  <section>
+
+    <div>Decorator</div>
+
+    <br>
+
+    <paper-input-decorator label="with core-input">
+      <input is="core-input">
+    </paper-input-decorator>
+
+    <br>
+
+    <paper-input-decorator label="with core-input + floatingLabel" floatingLabel>
+      <input is="core-input">
+    </paper-input-decorator>
+
+    <br>
+
+    <paper-input-decorator label="with autogrowing text area">
+      <paper-autogrow-textarea>
+        <textarea></textarea>
+      </paper-autogrow-textarea>
+    </paper-input-decorator>
+
+    <br>
+
+    <paper-input-decorator label="with autogrowing text area + floatingLabel" floatingLabel>
+      <paper-autogrow-textarea>
+        <textarea></textarea>
+      </paper-autogrow-textarea>
+    </paper-input-decorator>
+
   </section>
+
+  <section>
+
+    <div>Character counter</div>
+
+    <paper-input-decorator label="input with visible character counter">
+      <input id="i1" is="core-input" maxlength="5">
+      <paper-char-counter class="counter" target="i1"></paper-char-counter>
+    </paper-input-decorator>
+
+    <br>
+
+    <paper-input-decorator label="input with character counter and custom error"
+                           error="maximum characters exceeded">
+      <input id="i2" is="core-input" maxlength="10">
+      <paper-char-counter class="counter" target="i2"></paper-char-counter>
+    </paper-input-decorator>
+
+    <br>
+
+    <paper-input-decorator label="input with hidden character counter"
+                           error="maximum characters exceeded">
+      <input id="i3" is="core-input" maxlength="10">
+      <paper-char-counter class="counter" showCounter="false" target="i3"></paper-char-counter>
+    </paper-input-decorator>
+
+    <paper-input-decorator label="autogrowing text area with character counter">
+      <paper-autogrow-textarea>
+        <textarea id="t1" maxlength="100"></textarea>
+      </paper-autogrow-textarea>
+      <paper-char-counter class="counter" target="t1"></paper-char-counter>
+    </paper-input-decorator>
+
+  </section>
+
+  <section>
+
+    <div>Auto-Validation</div>
+
+    <paper-input-decorator label="required" floatingLabel error="input is required!" autoValidate>
+      <input is="core-input" required>
+    </paper-input-decorator>
+
+  </section>
+
+  <section>
+
+    <div>Custom styling</div>
+
+    <br>
+
+    <paper-input class="custom" label="paper-input"></paper-input>
+
+    <br>
+
+    <paper-input-decorator class="custom" label="decorator">
+      <input is="core-input">
+    </paper-input-decorator>
+
+  </section>
+
+  <script>
+
+    document.body.addEventListener('change', function(e) {
+      console.log('change', e.target);
+    });
+
+  </script>
+
 </body>
+</html>
