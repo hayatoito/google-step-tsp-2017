@@ -13,12 +13,10 @@
     "tests"
   ],
   "dependencies": {
-    "core-iconset": "Polymer/core-iconset#^0.5",
-    "core-scroll-header-panel": "Polymer/core-scroll-header-panel#~0.5",
-    "paper-elements": "Polymer/paper-elements#~0.5",
-    "polymer": "Polymer/polymer#~0.5"
-  },
-  "resolutions": {
-    "webcomponentsjs": "0.7.0"
+    "polymer": "Polymer/polymer#^1.0.0",
+    "paper-fab": "PolymerElements/paper-fab#^1.0.0",
+    "paper-radio-button": "PolymerElements/paper-radio-button#^1.0.0",
+    "paper-radio-group": "PolymerElements/paper-radio-group#^1.0.0",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.0.1"
   }
 }

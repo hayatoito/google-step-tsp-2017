@@ -1,46 +1,51 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 
-<polymer-element name="travelling-salesman-problem" attributes="inputfile solutionfile pathlength">
+<dom-module id="travelling-salesman-problem">
+  <style>
+    #graph {
+      width: 100%;
+    }
+  </style>
   <template>
-    <style>
-      :host {
-        display: block;
-        width: 100%;
-      }
-      #graph {
-        width: 100%;
-      }
-    </style>
     <svg id="graph"></svg>
   </template>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.8/d3.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
-  <script>
-    Polymer({
-        inputfileChanged: function() {
-            this.draw();
-        },
-        solutionfileChanged: function() {
-            this.draw();
-        },
-        draw: function() {
-            if (!this.inputfile || !this.solutionfile) return;
-            this.$.graph.innerHTML = '';
-            var self = this;
+</dom-module>
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
+<script>
+  Polymer({
+      is: "travelling-salesman-problem",
+      properties: {
+          inputfile: {
+              type: String,
+          },
+          solutiofile: {
+              type: String,
+          },
+          pathlength: {
+              type: Number,
+              notify: true
+          }
+      },
+      draw: function() {
+          if (!this.inputfile || !this.solutionfile) {
+              return;
+          }
+          var self = this;
+          var width = this.$.graph.getBoundingClientRect().width;
+          var height = Math.round(width * 900 / 1600);
 
-            var width = this.$.graph.offsetWidth;
-            // TODO(hayato): Height should be adjusted by actual y values.
-            var height = Math.round(width * 900 / 1600);
+          var graph = d3.select(this.$.graph);
+          graph.selectAll('*').remove();
+          graph.attr("height", height);
 
-            var x = d3.scale.linear().range([4, width - 4]);
-            var y = d3.scale.linear().range([4, height - 4]);
+          var x = d3.scale.linear().range([4, width - 4]);
+          var y = d3.scale.linear().range([4, height - 4]);
 
-            var graph = d3.select(this.$.graph).attr("height", height);
+          var cities = [];
+          var solution = [];
 
-            var cities = [];
-            var solution = [];
-
-            queue()
+          queue()
                 .defer(d3.csv, this.inputfile, function(city) {
                     city.x = parseFloat(city.x);
                     city.y = parseFloat(city.y);
@@ -57,55 +62,54 @@
                     }
                 });
 
-            function caluculateDistance() {
-                var N = cities.length;
-                function distance(i, j) {
-                    return Math.sqrt(Math.pow(cities[i].x - cities[j].x, 2) + Math.pow(cities[i].y - cities[j].y, 2));
-                }
-                var pathlength = 0;
-                for (var i = 0; i < N; ++i) {
-                    pathlength += distance(solution[i], solution[(i + 1) % N]);
-                }
-                self.pathlength = Math.round(pathlength * 100) / 100;
-            }
+          function caluculateDistance() {
+              var N = cities.length;
+              function distance(i, j) {
+                  return Math.sqrt(Math.pow(cities[i].x - cities[j].x, 2) + Math.pow(cities[i].y - cities[j].y, 2));
+              }
+              var pathlength = 0;
+              for (var i = 0; i < N; ++i) {
+                  pathlength += distance(solution[i], solution[(i + 1) % N]);
+              }
+              self.pathlength = Math.round(pathlength * 100) / 100;
+          }
 
-            function drawGraph() {
-                x.domain([0, d3.max(cities, function(d) { return d.x; })]);
-                y.domain([0, d3.max(cities, function(d) { return d.y; })]);
+          function drawGraph() {
+              x.domain([0, d3.max(cities, function(d) { return d.x; })]);
+              y.domain([0, d3.max(cities, function(d) { return d.y; })]);
 
-                var bar = graph.selectAll("g")
-                        .data(cities)
-                        .enter().append("circle")
-                        .attr("class", "dot")
-                        .attr("r", 5)
-                        .attr("cx", function(d) { return x(d.x); })
-                        .attr("cy", function(d) { return y(d.y); })
-                        .attr("stroke-width", "0.5px")
-                        .attr("stroke", "#fff")
-                        .style("fill", "#4285f4");
+              var bar = graph.selectAll("g")
+                             .data(cities)
+                             .enter().append("circle")
+                             .attr("class", "dot")
+                             .attr("r", 5)
+                             .attr("cx", function(d) { return x(d.x); })
+                             .attr("cy", function(d) { return y(d.y); })
+                             .attr("stroke-width", "0.5px")
+                             .attr("stroke", "#fff")
+                             .style("fill", "#4285f4");
 
-                var lineFunction = d3.svg.line()
-                        .x(function(d) { return x(cities[d].x); })
-                        .y(function(d) { return y(cities[d].y); })
-                        .interpolate("linear");
+              var lineFunction = d3.svg.line()
+                                   .x(function(d) { return x(cities[d].x); })
+                                   .y(function(d) { return y(cities[d].y); })
+                                   .interpolate("linear");
 
-                var path = graph.append("path")
-                        .attr("d", lineFunction(solution.concat(solution[0])))
-                        .attr("stroke", "#666")
-                        .attr("stroke-width", 3)
-                        .attr("opacity", 0.6)
-                        .attr("fill", "none");
+              var path = graph.append("path")
+                              .attr("d", lineFunction(solution.concat(solution[0])))
+                              .attr("stroke", "#666")
+                              .attr("stroke-width", 3)
+                              .attr("opacity", 0.6)
+                              .attr("fill", "none");
 
-                var totalLength = path.node().getTotalLength();
+              var totalLength = path.node().getTotalLength();
 
-                path.attr("stroke-dasharray", totalLength + " " + totalLength)
-                    .attr("stroke-dashoffset", totalLength)
-                    .transition()
-                    .duration(totalLength)
-                    .ease("linear")
-                    .attr("stroke-dashoffset", 0);
-            }
-        },
-    });
-  </script>
-</polymer-element>
+              path.attr("stroke-dasharray", totalLength + " " + totalLength)
+                  .attr("stroke-dashoffset", totalLength)
+                  .transition()
+                  .duration(totalLength)
+                  .ease("linear")
+                  .attr("stroke-dashoffset", 0);
+          }
+      },
+  });
+</script>
