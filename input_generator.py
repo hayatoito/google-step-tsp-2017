@@ -7,8 +7,8 @@ CHALLENGE_SIZES = (5, 8, 16, 64, 128, 512, 2048)
 
 def generate_cities(n, max_x=1600.0, max_y=900.0, seed=1):
     random.seed(seed)
-    return [(random.uniform(0, max_x), random.uniform(0, max_y))
-            for i in range(n)]
+    for i in range(n):
+        yield random.uniform(0, max_x), random.uniform(0, max_y)
 
 
 def main():
