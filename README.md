@@ -1,4 +1,4 @@
-Google 2015 STEP Class 5 - Travelling Salesman Problem Challenges
+Google 2016 STEP Class 6 - Travelling Salesman Problem Challenges
 ====
 
 Hayato Ito (hayato@google.com)
@@ -6,24 +6,37 @@ Hayato Ito (hayato@google.com)
 1. Problem Statement
 ----
 
-In this assignment, you will design an algorithm to solve a fundamental problem faced by every travelling salesperson, called *Travelling Salesman Problem* (TSP).
-I’ll explain TSP using a whiteboard in the onsite class, June 26.
-TSP is very famous problem. See http://en.wikipedia.org/wiki/Travelling_salesman_problem. You should understand the problem without any difficulties.
+In this assignment, you will design an algorithm to solve a fundamental problem
+faced by every travelling salesperson, called *Travelling Salesman Problem*
+(TSP).  I’ll explain TSP using a whiteboard in the onsite class, July 1.  TSP
+is very famous problem. See
+http://en.wikipedia.org/wiki/Travelling_salesman_problem. You should understand
+the problem without any difficulties.
 
 Quoted from [Wikipedia](http://en.wikipedia.org/wiki/Travelling_salesman_problem):
 
-> The travelling salesman problem (TSP) asks the following question: Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?
+> The travelling salesman problem (TSP) asks the following question: Given a
+> list of cities and the distances between each pair of cities, what is the
+> shortest possible route that visits each city exactly once and returns to the
+> origin city?
 
 2. Assignment
 ----
 
-The assignment is hosted on GitHub, https://github.com/hayatoito/google-2015-step-tsp.
-You can download the assignment by `git clone`:
+The assignment is hosted on GitHub,
+https://github.com/hayatoito/google-step-tsp.  You can download the assignment
+by `git clone`:
 
-    git clone https://github.com/hayatoito/google-2015-step-tsp
+    git clone https://github.com/hayatoito/google-step-tsp
 
-I recommend you to [fork](https://help.github.com/articles/fork-a-repo/) this repository to your own git repository before cloning it. You will be asked to publish your own git repository later.
-Note that this document doesn’t explain “what is git?’ nor “how to use GitHub?”. It’s your responsibility to master the usage of git and GitHub. Some of the sample scripts included in the repository are written in Python 3, rather than Python 2. It’s also your responsibility to install Python 3 into your laptop if you want to run the scripts, though which is not mandatory.
+I recommend you to [fork](https://help.github.com/articles/fork-a-repo/) this
+repository to your own git repository before cloning it. You will be asked to
+publish your own git repository later.  Note that this document doesn’t explain
+“what is git?’ nor “how to use GitHub?”. It’s your responsibility to master the
+usage of git and GitHub. Some of the sample scripts included in the repository
+are written in Python 3, rather than Python 2. It’s also your responsibility to
+install Python 3 into your laptop if you want to run the scripts, though which
+is not mandatory.
 
 There are 7 challenges of TSP in the assignment, from N = 5 to N = 2048:
 
@@ -37,7 +50,8 @@ There are 7 challenges of TSP in the assignment, from N = 5 to N = 2048:
 | Challenge 5  |                        512 | input_5.csv | solution_yours_5.csv   |
 | Challenge 6  |                       2048 | input_6.csv | solution_yours_6.csv   |
 
-See *3. Data Format Specification* section to know the format of input and solution files.
+See *3. Data Format Specification* section to know the format of input and
+solution files.
 
 ### Your tasks
 
@@ -46,19 +60,50 @@ See *3. Data Format Specification* section to know the format of input and solut
 * Enter the *path length* of your solution in the [scoreboard], for each challenge. Needless to say, shorter path length is better.
 * Publish your git repository, which should include your code and solutions.
 
-[scoreboard]: https://docs.google.com/spreadsheets/d/1knGHexwjlFJkRhhpuVtBjQAiI7TaTapysBPMPe0KO3A/edit?usp=sharing
+[scoreboard]: https://docs.google.com/spreadsheets/d/1BkPU8cEkwvlZatVsxw62GKYxhWREcZywruL4AfasxQg/edit?usp=sharing
+
+### An optional task (Speed challenge)
+
+What matters in this optional task is your program's *speed* (execution time). The path length does not matter as long as it meets the condition.
+Your task is:
+
+* Given `input_6.csv`, write a program to output a path shorter than `47,000`
+
+Your program's execution time will be your *score*. Faster (smaller) is better.
+
+Input your program's execution time in the [scoreboard].
+
+You can measure the execution time by `time` command.
+
+```shellsession
+$ time yourprogram input_6.csv solution_yours_6.csv
+2.96s user 0.07s system 97% cpu 3.116 total
+```
+
+In this case, your score is `3.116` (s).
 
 ### Visualizer
 
-The demo page of the visualizer is: http://hayatoito.github.io/google-2015-step-tsp/visualizer/.
+The demo page of the visualizer is:
+http://hayatoito.github.io/google-step-tsp/visualizer/.
 
-The assignment includes a helper Web page, `visualizer/index.html`, which visualizes your solutions. You need to run a HTTP server on your local machine to access the visualizer. Any HTTP server is okay. If you are not sure how to run a web server, use the following command to run the HTTP server included in the assignment. Make sure that you are in the top directory of the assignment before running the command.
+The assignment includes a helper Web page, `visualizer/index.html`, which
+visualizes your solutions. You need to run a HTTP server on your local machine
+to access the visualizer. Any HTTP server is okay. If you are not sure how to
+run a web server, use the following command to run the HTTP server included in
+the assignment. Make sure that you are in the top directory of the assignment
+before running the command.
 
-    ./nocache_server.py # For Python 3
-    ./nocache_server.py2.py # If you don’t want to install Python3
+``` shellsession
+./nocache_server.py # For Python 3
+./nocache_server.py2.py # If you don’t want to install Python3
+```
 
-Then, open a browser and navigate to the [http://localhost:8000/visualizer/](http://localhost:8000/visualizer/). Note that visualizer was only tested by Google Chrome.
-Using the visualizer is up-to you. You don’t have to use the visualizer to finish the assignment. The visualizer is provided for the purpose of helping you understand the problem.
+Then, open a browser and navigate to the
+[http://localhost:8000/visualizer/](http://localhost:8000/visualizer/). Note
+that visualizer was only tested by Google Chrome.  Using the visualizer is
+up-to you. You don’t have to use the visualizer to finish the assignment. The
+visualizer is provided for the purpose of helping you understand the problem.
 
 3. Data Format Specification
 ----
@@ -67,130 +112,180 @@ Using the visualizer is up-to you. You don’t have to use the visualizer to fin
 
 The input consists of `N + 1` lines. The first line is always `x,y`. It is followed by `N` lines, each line represents an i-th city’s location, point `xi,yi` where `xi`, `yi` is a floating point number.
 
-    dx,y
-    x_0,y_0
-    x_1,y_1
-    …
-    x_N-1,y_N-1
+```
+dx,y
+x_0,y_0
+x_1,y_1
+…
+x_N-1,y_N-1
+```
 
 ### Output Format
 
 Output has `N + 1` lines. The first line should be “index”. It is followed by `N` lines, each line is the index of city, which represents the visitation order.
 
-    index
-    v_0
-    v_1
-    v_2
-    …
-    v_N-1
+```
+index
+v_0
+v_1
+v_2
+…
+v_N-1
+```
 
 ### Example (Challenge 0, N = 5)
 
 Input Example:
 
-    x,y
-    214.98279057984195,762.6903632435094
-    1222.0393903625825,229.56212316547953
-    792.6961393471055,404.5419583098643
-    1042.5487563564207,709.8510160219619
-    150.17533883877582,25.512728869805677
+```
+x,y
+214.98279057984195,762.6903632435094
+1222.0393903625825,229.56212316547953
+792.6961393471055,404.5419583098643
+1042.5487563564207,709.8510160219619
+150.17533883877582,25.512728869805677
+```
 
 Output (Solution) Example:
 
-    index
-    0
-    2
-    3
-    1
-    4
+```
+index
+0
+2
+3
+1
+4
+```
 
 These formats are requirements for the visualizer, which can take only properly formatted CSV files as input.
 
 4. Schedule
 ----
 
-### June 26 (Fri), 2015, 5:00 PM JST
+### July 1 (Fri), 2016, 5:00 PM JST
 
-The Class 5 starts. You must bring your laptop.
+The class starts. You must bring your laptop.
 
-This class is a kick-off class for the assignment and will be basically 3 hours hackathon. You are expected to understand the problem and solve a challenge with a small N. You can also try a challenge with a large N if you can move fast in the class.
+This class is a kick-off class for the assignment and will be basically 3 hours
+hackathon. You are expected to understand the problem and solve a challenge
+with a small N. You can also try a challenge with a large N if you can move
+fast in the class.
 
-### June 29 (Mon), 2015, 6:00 PM JST
+### July 1 (Fri), 2016, 8:00 PM JST - July 8 (Fri), 2016, 5:00 PM JST
 
-(Optional) Office hours. I'll be there. Please follow TA's instructions to join the office hours.
+The deadline of the submission is the next Friday.
 
-### July 2 (Thu), 2015, 11:59 PM JST
+Until the deadline, you are expected to improve your algorithm and enter the
+score in the [scoreboard] manually for each challenge. You can update the score
+as many times as needed. I highly recommend you to update your score whenever
+you can find a shorter path. Especially, if you get the best score in the
+scoreboard, please announce it at [GitHub Issues] as much as possible so that other
+participants can know that your score is the next target.
 
-The deadline for submission.
+You should enter your git repository's location in the [scoreboard] as soon as
+you can.  Other participants want to see your code even if your code is
+work in progress. Early is better than perfect.
 
-Until the deadline, you are expected to improve your algorithm and enter the score in the [scoreboard] manually for each challenge. You can update the score as many times as needed. I highly recommend you to update your score whenever you can find a shorter path. Remember that other students, as well as me, are interested in your progress. Don’t update the score after the deadline.
+You can also enter the visualizer URL so that other students can see how your
+salesperson is visiting each city in your solution.
 
-You can also enter the visualizer URL so that other students can see how a salesperson is visiting each city in your solution.
 
-After the deadline, you can publish your code and solutions. Input the location of your git repository in the [scoreboard].
-You might want to avoid to input the repository location before the deadline because other students don't want to see your code accidentally before the deadline.
+### July 5 (Tue), 2016, 5:00 PM JST
 
-### July 3 (Fri), 2015, 5:00 PM JST
+(Optional) Office hours. I will be available until 9:00pm. You can leave anytime.
 
-The Class 6 starts. You must bring your laptop.
+How to attend office hours: I will announce it later at [GitHub Issues].
 
-We have one-hour wrap-up time. Be ready to explain your code and algorithm. You will also be encouraged to take a look at code written by other students and understand *their* approaches. Please keep your code *clean* so that other students can read your code and understand your approach without any difficulties. Writing readable code is one of the most important skills as a Software Engineer. I recommend you to update README.md file to explain the content of your git repository.
+### July 1 (Fri), 2016, 8:00 PM JST - July 8 (Fri), 2016, 5:00 PM JST
+
+The deadline of the submission is the beginning of the next class.
+
+We have one-hour wrap-up time in this week's
+class. You must bring your laptop. Be ready to explain your code and algorithm.
+
+The top rankers in the scoreboard are expected to explain their approaches and code to other students.
+Please be prepare to run your program in the class.
+
+You will also be encouraged to take a look at code written by other students and
+understand *their* approaches before the class starts. Please keep your code *clean* so that other
+students can read your code and understand your approach without any
+difficulties. Writing readable code is one of the most important skills as a
+Software Engineer. I recommend you to update README.md file to explain the
+content of your git repository.
 
 5. What’s included in the assignment
 ----
 
-To help you understand the problem, there are some sample scripts / resources in the assignment, including, but not limited to:
+To help you understand the problem, there are some sample scripts / resources
+in the assignment, including, but not limited to:
 
-* `solver_random.py` - Sample stupid solver. You never lose to this stupid one.
-* `solution_random_{0-6}.csv` - Sample solutions by solver_random.py.
-* `solver_greedy.py` - Sample solver using the greedy algorithm. You should beat this definitely.
-* `solution_greedy_{0-6}.csv` - Sample solutions by solver_greedy.py.
-* `solution_sa_{0-6}.csv` - Yet another sample solutions. I expect all of you will beat this one too. The solver itself isn’t included intentionally.
-* `solution_yours_{0-6}.csv` - You should overwrite these files with your solution.
-* `solution_verifier.py` - Try to validate your solution and print the path length.
-* `input_generator.py` - Python script which was used to create input files, `input_{0-6}.csv`
-* `visualizer/` - The directory for visualizer.
+- `solver_random.py` - Sample stupid solver. You never lose to this stupid one.
+- `solution_random_{0-6}.csv` - Sample solutions by solver_random.py.
+- `solver_greedy.py` - Sample solver using the greedy algorithm. You should beat this definitely.
+- `solution_greedy_{0-6}.csv` - Sample solutions by solver_greedy.py.
+- `solution_sa_{0-6}.csv` - Yet another sample solutions. I expect all of you will beat this one too. The solver itself is not included intentionally.
+- `solution_yours_{0-6}.csv` - You should overwrite these files with your solution.
+- `solution_verifier.py` - Try to validate your solution and print the path length.
+- `input_generator.py` - Python script which was used to create input files, `input_{0-6}.csv`
+- `visualizer/` - The directory for visualizer.
 
 6. Discussions / Collaboration Rules
 ----
 
-I highly encourage you to exchange an idea between students. If you have any question, or any idea, please use [GitHub Issues] in the repository. You can create a new issue there to ask a question or share your idea. It's very important to share your question among all students so that everyone can get benefts from the discussion there. Other students may have the same question. Please feel free to answer a question from other students. I'll join the discussion as much as possible.
+I highly encourage you to exchange an idea between students. If you have any
+question, or any idea, please use [GitHub Issues] in the repository. You can
+create a new issue there to ask a question or share your idea. It's very
+important to share your question among all students so that everyone can get
+benefit from the discussion there. Other students may have the same
+question. Please feel free to answer a question from other students. I will join
+the discussion as much as possible.
 
-You might want to [watch](https://help.github.com/articles/watching-repositories/) the repository so that you get notification for any new issues that are created there.
+You might want to
+[watch](https://help.github.com/articles/watching-repositories/) the repository
+so that you get notification for any new issues that are created there.
 
-[GitHub Issues]: https://github.com/hayatoito/google-2015-step-tsp/issues
+[GitHub Issues]: https://github.com/hayatoito/google-step-tsp/issues
 
 Please refrain from the followings:
 
-* Posting the actual code, including pseudo-code, before the deadline.
-* Using code which is not your own.
+- Using code which is not your own. It is okay to see other student's code, however, do not use it as is. I do not want to write down a strict rule here. Use your best judgement.
 
 ### Group
 
-It's okay to work as a group if you prefer. The number of members in one group should be less than 5. You can exchange anything between the members in the same group. You can't belong to more than one group at the same time. Please use one GitHub repository per a group. You should mention who are the members in `README.md` file. If you are looking for a member, please file an issue to [GitHub Issues] to recruite members.
-
-You could know the location of code in other groups, accidentally, before the deadline. For example, you can guess the location of the git repository of other groups via visualizer's URL in the [scoreboard]. However, please refrain from taking a look at the code and re-use it. I trust all of you.
+It's okay to work as a group if you prefer. The number of members in one group
+should be less than 5. You can exchange anything between the members in the
+same group. You can not belong to more than one group at the same time. Please
+use one GitHub repository per a group. You should mention who are the members
+in `README.md` file. If you are looking for a member, please file an issue to
+[GitHub Issues] to recruit members.
 
 7. Feedback from me
 ----
 
-I promise to review your code and give you code comments as much as possible, if all of the following conditions are satisfied:
+I will review your code and give you code comments as much as possible,
+if all of the following conditions are satisfied:
 
-*   Your code is hosted on GitHub. I'll use GitHub's code review system. Don't forget to enter your repository's URL in the [scoreboard].
-*   Your code is written in one of the followings:
-    *   C++, Python, Scala, Java, C, JavaScript, Go, Haskell, Scheme and Emacs Lisp.
+-   Your code is hosted on GitHub. I will use GitHub's code review system. Do not forget to enter your repository's URL in the [scoreboard].
 
-        I can't promise to review your code if the code is written in other programming languages.
+-   Your code is written in one of the followings:
 
-Please feel free to [mention](https://github.com/blog/821) @hayatoito at GitHub, anytime, even before the deadline. I'll get notification if you mention @hayatoito. I'll do the best effort to give a comment to your code in progress.
+     - C++, Rust, Scala, Python3, Python2, Java, C, JavaScript, Haskell, OCaml, and Emacs Lisp.
 
-I won't comment much about your approach itself before the deadline. I only comment about the quality of your code, in terms of readability and efficiency, and give you an advice about how to improve it.
+    I can not promise to review your code if the code is written in other
+    programming languages.
 
+Please feel free to [mention](https://github.com/blog/821) @hayatoito at
+GitHub, anytime, even before the deadline. I will get notified if you mention
+@hayatoito. I will do the best effort to give a comment to your code in progress.
+
+I will not comment much about your approach itself before the deadline. I only
+comment about the quality of your code, in terms of readability and efficiency,
+and give you an advice about how to improve it.
 
 8. FAQ
 ----
 
-This FAQ includes the questions and the answers in the last year, 2014. Some Q/A might be obsolete for this year.
+This FAQ includes the questions and the answers in the last year, 2015. Some Q/A might be obsolete for this year.
 Please use [GitHub Issues] for a new question.
 
 > I found a typo in this document.

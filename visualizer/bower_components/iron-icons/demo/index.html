@@ -11,13 +11,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
 <head>
 
-  <title>iron-icons</title>
-
-  <!-- polyfill WebComponents, if needed -->
+  <title>iron-icons demo</title>
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-
-  <!-- load layout classes -->
-  <link rel="import" href="../../iron-flex-layout/classes/iron-flex-layout.html">
+  <link rel="import" href="../../paper-styles/demo-pages.html">
+  <link rel="import" href="../../paper-styles/color.html">
+  <link rel="import" href="../../iron-flex-layout/iron-flex-layout.html">
 
   <!-- load default iconset -->
   <link rel="import" href="../iron-icons.html">
@@ -32,12 +30,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="import" href="../maps-icons.html">
   <link rel="import" href="../notification-icons.html">
   <link rel="import" href="../social-icons.html">
+  <link rel="import" href="../places-icons.html">
 
-  <style>
-
-    body {
-      font-family: sans-serif;
-    }
+  <style is="custom-style">
 
     h2 {
       text-transform: capitalize;
@@ -49,39 +44,50 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     iron-icon:hover {
-      fill: #fb8c00;
+      fill: var(--google-yellow-700);
     }
 
     .set {
+      margin: auto;
       padding: 1em 0;
       border-bottom: 1px solid silver;
+      @apply(--layout-horizontal);
+      @apply(--layout-wrap);
+    }
+
+    .set:last-of-type {
+      border-bottom: none;
     }
 
     .set:nth-of-type(4n-3) {
-      color: #656565;
+      color: var(--paper-grey-700);
     }
 
     .set:nth-of-type(4n-2) {
-      color: #FDD835;
+      color: var(--paper-pink-500);
     }
 
     .set:nth-of-type(4n-1) {
-      color: #0D904F;
+      color: var(--google-green-500);
     }
 
     .set:nth-of-type(4n) {
-      color: #3B78E7;
+      color: var( --google-blue-500);
     }
 
     .container {
-      min-width: 20em;
+      min-width: 10em;
       padding: 1em 0.5em;
+      text-align: center;
+      @apply(--layout-vertical);
+      @apply(--layout-center);
+      @apply(--layout-flex-1);
     }
 
     .container > div {
       margin-top: 0.5em;
       color: black;
-      font-size: 0.8em;
+      font-size: 10px;
     }
 
   </style>
@@ -97,11 +103,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <h2>{{item.name}}</h2>
 
-      <div class="set horizontal wrap layout">
+      <div class="set">
 
-        <template is="dom-repeat" items="{{item.iconNames}}">
+        <template is="dom-repeat" items="{{getIconNames(item)}}">
 
-          <span class="container vertical center layout">
+          <span class="container">
             <iron-icon icon="{{item}}"></iron-icon>
             <div>{{item}}</div>
           </span>
@@ -113,6 +119,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </template>
 
   </template>
+
+  <script>
+
+    document.querySelector('[is=dom-bind]').getIconNames = function(iconset) {
+      return iconset.getIconNames();
+    };
+
+  </script>
 
 </body>
 </html>
