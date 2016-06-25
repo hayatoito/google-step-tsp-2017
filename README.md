@@ -1,6 +1,8 @@
 Google 2016 STEP Class 6 - Travelling Salesman Problem Challenges
 ====
 
+[![Join the chat at https://gitter.im/hayatoito/google-step-tsp](https://badges.gitter.im/hayatoito/google-step-tsp.svg)](https://gitter.im/hayatoito/google-step-tsp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Hayato Ito (hayato@google.com)
 
 1. Problem Statement
