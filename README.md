@@ -3,7 +3,7 @@ Google 2016 STEP Class 6 - Travelling Salesman Problem Challenges
 
 [![Join the chat at https://gitter.im/hayatoito/google-step-tsp](https://badges.gitter.im/hayatoito/google-step-tsp.svg)](https://gitter.im/hayatoito/google-step-tsp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Hayato Ito (hayato@google.com)
+[Hayato Ito](https://github.com/hayatoito) (hayato@google.com)
 
 1. Problem Statement
 ----
@@ -33,8 +33,8 @@ by `git clone`:
 
 I recommend you to [fork](https://help.github.com/articles/fork-a-repo/) this
 repository to your own git repository before cloning it. You will be asked to
-publish your own git repository later.  Note that this document doesn’t explain
-“what is git?’ nor “how to use GitHub?”. It’s your responsibility to master the
+publish your own git repository later.  Note that this document does not explain
+“what is git?’ nor “how to use GitHub?”. It is your responsibility to master the
 usage of git and GitHub. Some of the sample scripts included in the repository
 are written in Python 3, rather than Python 2. It’s also your responsibility to
 install Python 3 into your laptop if you want to run the scripts, though which
@@ -69,11 +69,9 @@ solution files.
 What matters in this optional task is your program's *speed* (execution time). The path length does not matter as long as it meets the condition.
 Your task is:
 
-* Given `input_6.csv`, write a program to output a path shorter than `47,000`
+* Given `input_6.csv`, write a program which outputs a path shorter than `47,000`
 
-Your program's execution time will be your *score*. Faster (smaller) is better.
-
-Input your program's execution time in the [scoreboard].
+Input your program's execution time in the [scoreboard]. Faster (smaller) is better.
 
 You can measure the execution time by `time` command.
 
@@ -115,7 +113,7 @@ visualizer is provided for the purpose of helping you understand the problem.
 The input consists of `N + 1` lines. The first line is always `x,y`. It is followed by `N` lines, each line represents an i-th city’s location, point `xi,yi` where `xi`, `yi` is a floating point number.
 
 ```
-dx,y
+x,y
 x_0,y_0
 x_1,y_1
 …
@@ -164,43 +162,55 @@ These formats are requirements for the visualizer, which can take only properly 
 4. Schedule
 ----
 
-### July 1 (Fri), 2016, 5:00 PM JST
+### 2016-07-01 (Fri) 5:00pm (JST)
 
 The class starts. You must bring your laptop.
 
-This class is a kick-off class for the assignment and will be basically 3 hours
+This class is a kick-off class for the assignment, and will be basically 3 hours
 hackathon. You are expected to understand the problem and solve a challenge
 with a small N. You can also try a challenge with a large N if you can move
 fast in the class.
 
-### July 1 (Fri), 2016, 8:00 PM JST - July 8 (Fri), 2016, 5:00 PM JST
+### From: 2016-07-01 (Fri) 8:00pm - To: 2016-07-08 (Fri) 5:00pm
 
-The deadline of the submission is the next Friday.
+The deadline of the final submission is the next Friday.
 
 Until the deadline, you are expected to improve your algorithm and enter the
 score in the [scoreboard] manually for each challenge. You can update the score
 as many times as needed. I highly recommend you to update your score whenever
-you can find a shorter path. Especially, if you get the best score in the
-scoreboard, please announce it at [GitHub Issues] as much as possible so that other
+you can find a shorter path. If you get the best score in the
+scoreboard, please announce it at [GitHub Issues] so that other
 participants can know that your score is the next target.
 
-You should enter your git repository's location in the [scoreboard] as soon as
-you can.  Other participants want to see your code even if your code is
-work in progress. Early is better than perfect.
+You can enter your git repository's location in the [scoreboard] once it is ready. Publish your git repository as soon as possible.
+Other participants want to see your code even if your code is work in progress.
 
 You can also enter the visualizer URL so that other students can see how your
 salesperson is visiting each city in your solution.
 
+We have two phases before the final submission deadline:
 
-### July 5 (Tue), 2016, 5:00 PM JST
+####  The first phase: (- until 2016-07-05 (Tue) 11:59pm)
 
-(Optional) Office hours. I will be available until 9:00pm. You can leave anytime.
+- You can see (or use) code written in other students freely in this phase.
+  Please try to upload your code within the first phase as much as possible so that other students can see your code.
+- I will save a snapshot of the [scoreboard] at the end of the first phase to decide the winner(s) of the first phase.
+
+#### The second phase: (From: 2016-07-06 (Wed) 8:00am - To: 2016-07-08 (Fri) 5:00pm)
+
+- In this phase, you are not allowed to see code written by other groups. Please do not try to see code written in other groups in this phase.
+- It is okay to use code written in other groups if it is written in the first phase. You do not have to throw it away.
+- It is okay to ask any question freely even in this phase.
+
+### 2016-07-05 (Tue) 5:00pm
+
+(Optional) I will hold office hours on next Tuesday at Google Tokyo office 44F. I will be available until 9:00pm. You can leave anytime.
 
 How to attend office hours: I will announce it later at [GitHub Issues].
 
-### July 1 (Fri), 2016, 8:00 PM JST - July 8 (Fri), 2016, 5:00 PM JST
+### 2016-07-08 (Fri) 5:00pm
 
-The deadline of the submission is the beginning of the next class.
+The next class starts.
 
 We have one-hour wrap-up time in this week's
 class. You must bring your laptop. Be ready to explain your code and algorithm.
@@ -209,7 +219,7 @@ The top rankers in the scoreboard are expected to explain their approaches and c
 Please be prepare to run your program in the class.
 
 You will also be encouraged to take a look at code written by other students and
-understand *their* approaches before the class starts. Please keep your code *clean* so that other
+understand *their* approaches after the class. Please keep your code *clean* so that other
 students can read your code and understand your approach without any
 difficulties. Writing readable code is one of the most important skills as a
 Software Engineer. I recommend you to update README.md file to explain the
@@ -231,63 +241,77 @@ in the assignment, including, but not limited to:
 - `input_generator.py` - Python script which was used to create input files, `input_{0-6}.csv`
 - `visualizer/` - The directory for visualizer.
 
-6. Discussions / Collaboration Rules
+6. Discussions / Collaboration Rules / Code of Conduct
 ----
 
+### Discussion
+
 I highly encourage you to exchange an idea between students. If you have any
-question, or any idea, please use [GitHub Issues] in the repository. You can
-create a new issue there to ask a question or share your idea. It's very
-important to share your question among all students so that everyone can get
+question, or any idea, please share it at [GitHub Issues] or [Chat Room] in the repository.
+It is very important to share your question among all students so that everyone can get
 benefit from the discussion there. Other students may have the same
 question. Please feel free to answer a question from other students. I will join
 the discussion as much as possible.
 
 You might want to
-[watch](https://help.github.com/articles/watching-repositories/) the repository
-so that you get notification for any new issues that are created there.
+[watch the repository](https://help.github.com/articles/watching-repositories/)
+so that you get a notification when new question is posted.
 
 [GitHub Issues]: https://github.com/hayatoito/google-step-tsp/issues
-
-Please refrain from the followings:
-
-- Using code which is not your own. It is okay to see other student's code, however, do not use it as is. I do not want to write down a strict rule here. Use your best judgement.
+[Chat room]: https://gitter.im/hayatoito/google-step-tsp
 
 ### Group
 
-It's okay to work as a group if you prefer. The number of members in one group
+It is okay to work as a group if you prefer. The number of members in one group
 should be less than 5. You can exchange anything between the members in the
 same group. You can not belong to more than one group at the same time. Please
 use one GitHub repository per a group. You should mention who are the members
 in `README.md` file. If you are looking for a member, please file an issue to
 [GitHub Issues] to recruit members.
 
+### Code of Conduct
+
+Until the final deadline, please refrain from getting an assistance from a person other than the STEP students or me.
+
+In the second phase, please do not try to see code which is written by other groups.
+It is okay to share anything, anytime, in the same group.
+
+Use your best judgment when using third party libraries in your code. It is okay to use built-in libraries provided by programming languages.
+
+Please see also [code of conduct](https://online.berklee.edu/about/code-of-conduct), if you are interested in, as a general code of conduct, as a reference.
+
 7. Feedback from me
 ----
 
-I will review your code and give you code comments as much as possible,
-if all of the following conditions are satisfied:
+I will make my best effort to answer your questions via:
+
+-   [Chat room] for this class.
+
+-   [GitHub Issues] for this class.
+
+-   Office hours: I will be available.
+
+I will review your code and give you a comment as much as possible, if all of the following conditions are satisfied:
 
 -   Your code is hosted on GitHub. I will use GitHub's code review system. Do not forget to enter your repository's URL in the [scoreboard].
 
--   Your code is written in one of the followings:
-
-     - C++, Rust, Scala, Python3, Python2, Java, C, JavaScript, Haskell, OCaml, and Emacs Lisp.
-
-    I can not promise to review your code if the code is written in other
-    programming languages.
+-   Your code is written in one of the followings: C++, Rust, Scala, Python3, Python2, Java, C, JavaScript, Haskell, OCaml, and Emacs Lisp.
+    I can not promise to review your code if the code is written in other programming languages. I will do code review with Google Standard.
 
 Please feel free to [mention](https://github.com/blog/821) @hayatoito at
-GitHub, anytime, even before the deadline. I will get notified if you mention
-@hayatoito. I will do the best effort to give a comment to your code in progress.
+GitHub, anytime if you need my help. I will get notified if you mention
+@hayatoito. I will make my best effort to give a comment on your code.
 
-I will not comment much about your approach itself before the deadline. I only
-comment about the quality of your code, in terms of readability and efficiency,
+I will not comment much about your approach itself. I will comment mainly about the quality of your code, in terms of readability and efficiency,
 and give you an advice about how to improve it.
+
+You can also comment on other student's code at GitHub. Please get familiar with Git and GitHub, and use them effectively as a collaboration tool.
+In the first phase, you are encouraged to help other students so that all students can enjoy the assignment.
 
 8. FAQ
 ----
 
-This FAQ includes the questions and the answers in the last year, 2015. Some Q/A might be obsolete for this year.
+This FAQ includes the questions and the answers in the last year, 2015, as is. Some Q/A might be obsolete for this year.
 Please use [GitHub Issues] for a new question.
 
 > I found a typo in this document.
@@ -310,53 +334,17 @@ No limitation at all. You can use any machine resources you have.
 
 Yes. I am a big fan of the transparency. If you have any concerns, please let me know that. I’ll honor your preference. Don’t enter any confidential information.
 
-> Could you give me some hints for a challenge with a large N? I have no ideas how to attack those challenges.
-
-I might add some hints or some useful links to external resources later. Stay tuned. Remember that “Google” is your helpful resource.
-
 > Is there any prize for the winner?
 
 [Input what you want]
 
-> Visualizer doesn’t work well on firefox (or any other browsers if you like)
+> Visualizer does not work well on firefox (or any other browsers if you like)
 
 I appreciate if you could send a pull request which fixes the issue. You can consider this as an optional assignment. Your contribution is highly welcome.
 
 2015: This is fixed.
 
-> スコアボード、一人で何行も使っていい？アルゴリズムを変えたので。
-
-OKです。できるだけ、連続した行を使用してください。（シートには、「行を挿入」できます）
-
-> 自分の出した答えが正しく計算されているか自信がない.. Scoreboard に書いていいものかどうか...。
-
-solution_yours_{n}.csv を自分で更新してから、Visualizer や solution_verifier.py を使用すれば、path length を計算してくれます。ただし、Visualizer は、invalid な solutions でも受け入れてしまいます。
-
-> Web上で見かけた、数式は使っていい？
-
-OK です。
-
-> 来週のプレゼンテーションにむけて、スライドをつくったほうがよいですか？
-
-全員分のプレゼンテーションタイムの時間はとれない気がするので、スライドの準備等は特に必要はないです。それよりは、誰が読んでも理解できるような綺麗なコードを書くことに力を注ぎましょう。あるいは、README.md ファイルにきちんと説明を書いておくほうが、「今」っぽいです。
-
-> Visualizer で 自分のsolution (yours) を表示させるとき: Chrome は以前に読み込んだファイル  [solution_yours_{n}.csv] をキャッシュするので、solution_yours_{n}.csv を修正しても反映されません
-
-「python -m SimpleHTTPServer」の代わりにno-cache-servr.pyを使っていたら毎回現在のsolution_yours_{n}.csvを読み込んでくれるはずです。
-※ただし以前SimpleHTTPServerを使っていたら、まだcacheに入っている可能性があるので、以下の対策を使って、一回cacheを無効にして更新してみてください。
-http://stackoverflow.com/questions/5690269/disabling-chrome-cache-for-website-development
-
->  I have implemented the algorithms:
->  * all permutations (which only solves until challenge 1)
->  * Greedy
->  * Random
->  * SA
->  * Genetic algorithm
->  However, I cannot seem to beat the scores for challenges over 3 by hayato-sa. I cannot seem to find any bug in my SA or GA solution, but is there anyway we can see the cooling rate, starting temperature, and ending temperature that you used to get the scores on the scoreboard?
-
-Hidden.
-
-9. Acknowledgements
+9. Acknowledgments
 ----
 
 This assignment is heavily inspired by [Discrete Optimization Course on Coursera](https://www.coursera.org/course/optimization).
