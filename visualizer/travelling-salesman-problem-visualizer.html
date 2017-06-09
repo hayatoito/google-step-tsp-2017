@@ -10,38 +10,38 @@
 <link rel="import" href="travelling-salesman-problem.html">
 
 <dom-module id="travelling-salesman-problem-visualizer">
-  <style>
-    :host {
-      @apply(--layout-horizontal);
-    }
-    [nav] {
-      width: 220px;
-      @apply(--layout-vertical);
-    }
-    travelling-salesman-problem {
-      width: 100%;
-      margin-top: 16px;
-    }
-    #control {
-      padding: 8px;
-      @apply(--layout-vertical);
-    }
-    #result {
-      margin-top: 8px;
-    }
-    #challenges {
-      @apply(--layout-flex);
-      @apply(--layout-vertical);
-    }
-    #solvers {
-      @apply(--layout-flex);
-      @apply(--layout-vertical);
-    }
-    paper-radio-button {
-      display: block;
-    }
-  </style>
   <template>
+    <style>
+      :host {
+        @apply --layout-horizontal;
+      }
+      [nav] {
+        width: 220px;
+        @apply --layout-vertical;
+      }
+      travelling-salesman-problem {
+        width: 100%;
+        margin-top: 16px;
+      }
+      #control {
+        padding: 8px;
+        @apply --layout-vertical;
+      }
+      #result {
+        margin-top: 8px;
+      }
+      #challenges {
+        @apply --layout-flex;
+        @apply --layout-vertical;
+      }
+      #solvers {
+        @apply --layout-flex;
+        @apply --layout-vertical;
+      }
+      paper-radio-button {
+        display: block;
+      }
+    </style>
     <div nav>
       <div>
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" height="50"></img>
@@ -82,31 +82,38 @@
   </template>
 </dom-module>
 <script>
-  Polymer({
-    is: "travelling-salesman-problem-visualizer",
-    ready: function() {
+  class TravellingSalesmanProblemVisualizer extends Polymer.Element {
+    static get is() {
+      return 'travelling-salesman-problem-visualizer';
+    }
+    ready() {
+      super.ready();
+      console.log(this);
+      window.tt = this;
       var self = this;
       this.webComponentsReady = false;
-      this.$.challenges.addEventListener('paper-radio-group-changed', function(e) {
+      this.$.challenges.addEventListener('paper-radio-group-changed', (e) => {
         self.draw();
       });
-      this.$.solvers.addEventListener('paper-radio-group-changed', function() {
+      this.$.solvers.addEventListener('paper-radio-group-changed', () => {
         self.draw();
       });
-      window.addEventListener('WebComponentsReady', function(e) {
+      window.addEventListener('WebComponentsReady', (e) => {
         self.webComponentsReady = true;
         self.draw();
       });
-    },
-    run: function() {
+    }
+    run() {
       this.$.tsp.draw();
-    },
-    draw: function() {
+    }
+    draw () {
       this.$.tsp.inputfile = '../input_' + this.$.challenges.selected + '.csv';
       this.$.tsp.solutionfile = '../solution_' + this.$.solvers.selected + '_' + this.$.challenges.selected + '.csv';
       if (this.webComponentsReady) {
         this.$.tsp.draw();
       }
     }
-  });
+  }
+
+  customElements.define(TravellingSalesmanProblemVisualizer.is, TravellingSalesmanProblemVisualizer);
 </script>
