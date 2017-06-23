@@ -40,6 +40,7 @@ The assignment is hosted on GitHub, [https://github.com/hayatoito/google-step-ts
 You can download the assignment by `git clone`:
 
     git clone https://github.com/hayatoito/google-step-tsp
+    git checkout gh-pages
 
 I recommend you to [fork](https://help.github.com/articles/fork-a-repo/) this
 repository to your github account before cloning it.
