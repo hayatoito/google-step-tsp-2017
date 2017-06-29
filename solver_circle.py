@@ -43,6 +43,8 @@ def solve(cities):
     x_MAX = max(coordinates_x)
     y_min = min(coordinates_y)
     y_MAX = max(coordinates_y)
+
+    # 境界線上の都市のために最大値を+1する
     rectangle_MAX = Rectangle(x_min, x_MAX + 1, y_min, y_MAX + 1)
 
     # 範囲の中心
@@ -53,6 +55,7 @@ def solve(cities):
     fraction_unit_x = (x_MAX - x_min)/fraction_size * 2
     fraction_unit_y = (y_MAX - y_min)/fraction_size * 2
 
+    # 中心から徐々に広げていく範囲の配列を生成
     range_rectangles = [rectangle_MAX]
     for i in range(1, fraction_size - 1):
     	x_m = fraction_unit_x * i
@@ -62,10 +65,7 @@ def solve(cities):
     	r = Rectangle(x_m, x_M, y_m, y_M)
     	range_rectangles.insert(0, r)
 
-    search_x_m = 0
-    search_x_M = 0
-    search_y_m = 0
-    search_y_M = 0
+
     search_cities = []
     current_city = -1
     unvisited_cities = set(range(0, N))
@@ -77,13 +77,9 @@ def solve(cities):
 
 
     for r in range_rectangles:
-    		search_x_m = r.x_min
-    		search_x_M = r.x_MAX
-    		search_y_m = r.y_min
-    		search_y_M = r.y_MAX
     		
     		for j in unvisited_cities:
-    			if search_x_m <= coordinates_x[j] and coordinates_x[j] < search_x_M and search_y_m <= coordinates_y[j] and coordinates_y[j] < search_y_M:
+    			if r.x_min <= coordinates_x[j] and coordinates_x[j] < r.x_MAX and r.y_min <= coordinates_y[j] and coordinates_y[j] < r.y_MAX:
     				search_cities.append(j)
 
     		# 初めの探索の場合、最も中点に近い都市を見つける
