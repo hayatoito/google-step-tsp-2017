@@ -69,8 +69,6 @@ def solve(cities):
     search_cities = []
     current_city = -1
     unvisited_cities = set(range(0, N))
-    print ("unvisited_cities ->")
-    print (unvisited_cities)
 
     solution = []
 
@@ -88,11 +86,8 @@ def solve(cities):
     			if search_x_m <= coordinates_x[j] and coordinates_x[j] < search_x_M and search_y_m <= coordinates_y[j] and coordinates_y[j] < search_y_M:
     				search_cities.append(j)
 
-    		print ("search_cities ->")
-    		print (search_cities)
     		# 初めの探索の場合、最も中点に近い都市を見つける
     		if current_city == -1:
-    			print ("in")
     			dist_from_mid = x_MAX ** 2
     			for j in search_cities:
     				d = distanceFromMidTo(cities[j])
@@ -100,8 +95,6 @@ def solve(cities):
     					dist_from_mid = d
     					current_city = j
 
-    			print ("current_city ->")
-    			print (current_city)
     			if current_city != -1:
     				unvisited_cities.remove(current_city)
     				search_cities.remove(current_city)
@@ -116,7 +109,29 @@ def solve(cities):
 
     return solution
 
+# def save(solution):
+# 	challenge = 0
+# 	if len(solution) == 8:
+# 		challenge = 1
+# 	elif len(solution) == 16:
+# 		challenge = 2
+# 	elif len(solution) == 64:
+# 		challenge = 3
+# 	elif len(solution) == 128:
+# 		challenge = 4
+# 	elif len(solution) == 512:
+# 		challenge = 5
+# 	elif len(solution) == 2048:
+# 		challenge = 6
+
+# 	with open('solution_circle_{}.csv'.format(challenge)) as f:
+# 		f.write('index\n')
+# 		for i in solution:
+# 			f.write('{}\n'.format(solution))
+# 	print('success to save')
+
 if __name__ == '__main__':
     assert len(sys.argv) > 1
     solution = solve(read_input(sys.argv[1]))
     print_solution(solution)
+    # save(solution)
